@@ -3,7 +3,7 @@ package com.el.calculator.models;
 public class Calculator {
 
 	private static int numDecimalPlaces = 2;
-	private static double tolerance = 0.01;
+	private static double tolerance = 0.005;
 
 	private static double add(double a, double b) {
 		return a + b;
@@ -109,7 +109,8 @@ public class Calculator {
 		} catch (ArithmeticException e) {
 			return e.getMessage();
 		}
-		result = (result<tolerance) ? 0.0 : result;
+		result = (Math.abs(result)<tolerance) ? 0.0 : result;
+		//result = (result == 0) ? 0.0 : result;
 		String format = "%." + numDecimalPlaces + "f";
 		return String.format(format, result);
 
