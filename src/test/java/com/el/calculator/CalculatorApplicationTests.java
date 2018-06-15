@@ -34,9 +34,9 @@ public class CalculatorApplicationTests {
 //        this.expectedOutput = expectedOutput;
 //    }
     
-  @ParameterizedTest(name = "{index} => op={0}, first={1}, second={2}, expected= {3}")
-	@CsvFileSource(resources = "/test_cases.csv")
-	void sum(String op, double first, double second, String expected) {
+    @ParameterizedTest(name = "{index} => op={0}, first={1}, second={2}, expected= {3}")
+    @CsvFileSource(resources = "test_cases.csv")
+	void testAll(String op, double first, double second, String expected) {
 	  System.out.println("hello");
 	  System.out.println(expected);
 	  String actual = Calculator.calculate(op, first, second);
