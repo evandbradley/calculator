@@ -65,7 +65,7 @@ public class Calculator {
 			case "-":
 				result = subtract(a, b);
 				break;
-			case "*":
+			case "x":
 				result = multiply(a, b);
 				break;
 			case "/":
