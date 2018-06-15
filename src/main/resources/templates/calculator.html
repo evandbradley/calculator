@@ -1,0 +1,25 @@
+<!-- defualt.html -->
+<!doctype html>
+<html>
+  <head>
+    <title>EA'JAM's Calculator</title>
+  </head>
+  <body>
+    <h1>Basic Calculator</h1>
+    <p>Enter values to the nearest 0.01<p>
+    <form method="post" action="/">
+      <input required type="number" step="0.01" name="firstNumber">
+      <select name="operation">
+  		<option value="+">+</option>
+		<option value="-">-</option>
+  		<option value="*">x</option>
+  		<option value="/">÷</option>
+	</select>
+	<input required type="number" step="0.01" name="secondNumber">
+    <button>Calculate</button>
+    </form>
+    {{#result}}
+      {{ result }}
+    {{/result}}
+  </body>
+</html>
