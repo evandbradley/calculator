@@ -19,30 +19,95 @@ public class Calculator {
 
 	private static double divide(double a, double b) throws ArithmeticException {
 		if (b < tolerance)
-			throw new ArithmeticException("Division by zero.");
+			throw new ArithmeticException("Cannot divide by zero.");
 		else
 			return a / b;
 	}
 
+	private static double root(double a, double b) throws ArithmeticException {
+		if (b < tolerance)
+			throw new ArithmeticException("Cannot take a zero root.");
+		else
+			return (double) Math.round(Math.pow(a, b));
+	}
+
+	private static double power(double a, double b) {
+		return Math.pow(a, b);
+	}
+
+	private static double log(double a, double b) {
+		if (a < tolerance || b < tolerance)
+			throw new ArithmeticException("Invalid logarithm.");
+		else
+			return Math.log(a) / Math.log(b);
+	}
+
+	private static double natlog(double a) {
+		if (a < tolerance)
+			throw new ArithmeticException("Invalid logarithm.");
+		else
+			return Math.log(a);
+	}
+
+	private static double expt(double a) {
+		return Math.exp(a);
+	}
+
+	// Trig functions used in Math.*
+
 	public static String calculate(String operation, double a, double b) {
 		double result = 0.0;
-		switch (operation) {
-		case "+":
-			result = add(a, b);
-			break;
-		case "-":
-			result = subtract(a, b);
-			break;
-		case "*":
-			result = multiply(a, b);
-			break;
-		case "/":
-			try {
+		try {
+			switch (operation) {
+			case "+":
+				result = add(a, b);
+				break;
+			case "-":
+				result = subtract(a, b);
+				break;
+			case "*":
+				result = multiply(a, b);
+				break;
+			case "/":
 				result = divide(a, b);
-			} catch (ArithmeticException e) {
-				return "Cannot divide by zero.";
+				break;
+			case "root":
+				result = root(a, b);
+				break;
+			case "log":
+				result = log(a, b);
+				break;
+			case "ln":
+				result = natlog(a);
+				break;
+			case "^":
+				result = power(a, b);
+				break;
+			case "e^x":
+				result = expt(a);
+				break;
+			case "sin":
+				result = Math.sin(a);
+				break;
+			case "cos":
+				result = Math.cos(a);
+				break;
+			case "tan":
+				result = Math.tan(a);
+				break;
+			case "sinh":
+				result = Math.sinh(a);
+				break;
+			case "cosh":
+				result = Math.cosh(a);
+				break;
+			case "tanh":
+				result = Math.tanh(a);
+			default:
+				return "Operation not recognized.";
 			}
-			break;
+		} catch (ArithmeticException e) {
+			return e.getMessage();
 		}
 		String format = "%." + numDecimalPlaces + "f";
 		return String.format(format, result);
