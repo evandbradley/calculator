@@ -8,7 +8,6 @@
     <h1>Basic Calculator</h1>
     <p>Enter values to the nearest 0.01<p>
     <form method="post" action="/">
-      <input required type="number" step="0.01" name="firstNumber">
       <select name="operation">
   		<option value="+">+</option>
 		<option value="-">-</option>
@@ -30,7 +29,9 @@
   		<option value="M+">M+</option>
   		<option value="M-">M-</option>
 	</select>
+	<input required type="number" step="0.01" name="firstNumber">
 	<input required type="number" step="0.01" name="secondNumber"><button>=</button>
+
     </form>
     {{#result}}
       {{ result }}
