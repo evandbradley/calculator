@@ -3,7 +3,7 @@ package com.el.calculator.models;
 public class Calculator {
 
 	private static int numDecimalPlaces = 2;
-	private static double tolerance = 0.00001;
+	private static double tolerance = 0.01;
 
 	private static double add(double a, double b) {
 		return a + b;
@@ -18,14 +18,14 @@ public class Calculator {
 	}
 
 	private static double divide(double a, double b) throws ArithmeticException {
-		if (b < tolerance)
+		if (Math.abs(b) < tolerance)
 			throw new ArithmeticException("Cannot divide by zero.");
 		else
 			return a / b;
 	}
 
 	private static double root(double a, double b) throws ArithmeticException {
-		if (b < tolerance)
+		if (Math.abs(b) < tolerance)
 			throw new ArithmeticException("Cannot take a zero root.");
 		else
 			return (double) Math.round(Math.pow(a, b));
@@ -36,14 +36,14 @@ public class Calculator {
 	}
 
 	private static double log(double a, double b) {
-		if (a < tolerance || b < tolerance)
+		if ((Math.abs(b) < tolerance) || (Math.abs(a) < tolerance))
 			throw new ArithmeticException("Invalid logarithm.");
 		else
 			return Math.log(a) / Math.log(b);
 	}
 
 	private static double natlog(double a) {
-		if (a < tolerance)
+		if (Math.abs(a) < tolerance)
 			throw new ArithmeticException("Invalid logarithm.");
 		else
 			return Math.log(a);
@@ -109,6 +109,7 @@ public class Calculator {
 		} catch (ArithmeticException e) {
 			return e.getMessage();
 		}
+		result = (result<tolerance) ? 0.0 : result;
 		String format = "%." + numDecimalPlaces + "f";
 		return String.format(format, result);
 
