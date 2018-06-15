@@ -6,7 +6,9 @@
   </head>
   <body>
     <h1>Basic Calculator</h1>
-    <p>Enter values to the nearest 0.01<p>
+    <p>Enter values to the nearest 0.01</p>
+    <p>For operations that require 1 input, second input will be ignored.
+    <br>(ex: sin, cos, tan, e^x, ln)</p>
     <form method="post" action="/">
       <select name="operation">
   		<option value="+">+</option>
@@ -29,9 +31,8 @@
   		<option value="M+">M+</option>
   		<option value="M-">M-</option>
 	</select>
-	<input required type="number" step="0.01" name="firstNumber">
-	<input required type="number" step="0.01" name="secondNumber"><button>=</button>
-
+	<input required type="number" step="0.01" name="firstnumber">
+	<input required type="number" step="0.01" value = 0 name="secondNumber"><button>=</button>
     </form>
     {{#result}}
       {{ result }}
