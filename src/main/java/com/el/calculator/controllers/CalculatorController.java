@@ -12,22 +12,16 @@ import com.el.calculator.models.Calculator;
 @RequestMapping("/")
 public class CalculatorController {
 
-    private Calculator calculator;
-
-    public CalculatorController() {
-        calculator = new Calculator();
-    }
-
     @GetMapping("")
     public String showDefaultPage() {
-        return "default";
+        return "calculator";
     }
 
     @PostMapping("")
     public ModelAndView convertNumber(double firstNumber, double secondNumber, String operation) {
-        String result = "";// = calculator.calc(operation, firstNumber, secondNumber);
+        String result = Calculator.calculate(operation, firstNumber, secondNumber);
 
-        ModelAndView mv = new ModelAndView("romanNumerals/default");
+        ModelAndView mv = new ModelAndView("calculator");
         mv.addObject("result", result);
         return mv;
     }
